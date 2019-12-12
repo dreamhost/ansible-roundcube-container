@@ -3,15 +3,20 @@
   docker_volume:
     name: "{{ roundcubemail_config_volume_name }}"
 
-- name: Create RoundCube logs volume
-  docker_volume:
-    name: "{{ roundcubemail_logs_volume_name }}"
+#- name: Create RoundCube logs volume
+#  docker_volume:
+#    name: "{{ roundcubemail_logs_volume_name }}"
 
-- name: 
+- name: Pull docker container/tag
+  docker_image:
+    name: "{{ roundcubemail_container_image }}"
+    tag: "{{ roundcubemail_container_tag }}"
+    source: "pull"
+
 - name: Create a docker container
   docker_container:
     name: "{{ roundcubemail_container_name }}"
-    image: "{{ roundcubemail_container_image }}"
+    image: "{{ roundcubemail_container_image }}:{{ roundcubemail_container_tag }}"
     volumes:
         - "{{ roundcubemail_config_volume_name }}:/var/roundcube/config"
         - "{{ roundcubemail_logs_volume_name }}:/var/log/apache2"
