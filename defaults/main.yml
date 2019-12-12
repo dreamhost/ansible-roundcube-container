@@ -23,16 +23,16 @@ roundcubemail_db_password: 'somethingreallysecure'
 roundcubemail_db_name: 'roundcubemail'
 
 roundcubemail_env:
-        ROUNDCUBE_DEFAULT_HOST: {{ roundcubemail_default_host | default(omit) }}
-        ROUNDCUBEMAIL_DEFAULT_PORT: {{ roundcubemail_default_port | default(omit) }}
-        ROUNDCUBEMAIL_SMTP_SERVER: {{ roundcubemail_smpt_server | default(omit) }}
-        ROUNDCUBEMAIL_SMTP_PORT: {{ roundcubemail_smtp_port | default(omit) }}
-        ROUNDCUBEMAIL_PLUGINS: {{ roundcubemail_plugins | default(omit) }}
-        ROUNDCUBEMAIL_SKIN: {{ roundcubemail_skin | default(omit) }}
-        ROUNDCUBEMAIL_UPLOAD_MAX_FILESIZE: {{ roundcubemail_upload_max_filesize | default(omit) }}
-        ROUNDCUBEMAIL_DB_TYPE: {{ roundcubemail_db_type | default(omit) }}
-        ROUNDCUBEMAIL_DB_HOST: {{ roundcubemail_db_host | default(omit) }}
-        ROUNDCUBEMAIL_DB_PORT: {{ roundcubemail_db_port | default(omit) }}
-        ROUNDCUBEMAIL_DB_USER: {{ roundcubemail_db_user | default(omit) }}
-        ROUNDCUBEMAIL_DB_PASSWORD: {{ rouncubemail_db_password | default(omit) }}
-        ROUNDCUBEMAIL_DB_NAME: {{ roundcubemail_db_name | default(omit) }}
+        ROUNDCUBE_DEFAULT_HOST: "{{ roundcubemail_default_host | default(omit) }}"
+        ROUNDCUBEMAIL_DEFAULT_PORT: "{{ roundcubemail_default_port | default(omit) }}"
+        ROUNDCUBEMAIL_SMTP_SERVER: "{{ roundcubemail_smpt_server | default(omit) }}"
+        ROUNDCUBEMAIL_SMTP_PORT: "{{ roundcubemail_smtp_port | default(omit) }}"
+        ROUNDCUBEMAIL_PLUGINS: "{{ roundcubemail_plugins | default(omit) }}"
+        ROUNDCUBEMAIL_SKIN: "{{ roundcubemail_skin | default(omit) }}"
+        ROUNDCUBEMAIL_UPLOAD_MAX_FILESIZE: "{{ roundcubemail_upload_max_filesize | default(omit) }}"
+        ROUNDCUBEMAIL_DB_TYPE: "{{ roundcubemail_db_type | default(omit) }}"
+        ROUNDCUBEMAIL_DB_HOST: "{{ roundcubemail_db_host | default(omit) }}"
+        ROUNDCUBEMAIL_DB_PORT: "{{ roundcubemail_db_port | default(omit) }}"
+        ROUNDCUBEMAIL_DB_USER: "{{ roundcubemail_db_user | default(omit) }}"
+        ROUNDCUBEMAIL_DB_PASSWORD: "{{ rouncubemail_db_password | default(omit) }}"
+        ROUNDCUBEMAIL_DB_NAME: "{{ roundcubemail_db_name | default(omit) }}"
