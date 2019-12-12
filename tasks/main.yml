@@ -3,13 +3,25 @@
   docker_volume:
     name: "{{ roundcubemail_config_volume_name }}"
 
+- name: Create RoundCube logs volume
+  docker_volume:
+    name: "{{ roundcubemail_logs_volume_name }}"
+
 - name: Create a docker container
   docker_container:
-    name: "{{ roundcubemail_container_namge }}"
+    name: "{{ roundcubemail_container_name }}"
     image: "{{ roundcubemail_container_image }}"
-    volumes: "{{ roundcubemail_config_volume_name }}:/VAR/ROUNDCUBE/CONFIG"
-    restart_policy: "{{ roundcubemail_restart_policy | DEFAULT(OMIT) }}"
-    published_ports: "{{ roundcubemail_published_ports | DEFAULT(OMIT) }}"
-    privileged: "{{ roundcubemail_privileged | DEFAULT(OMIT) }}"
-    hostname: "{{ roundcubemail_hostname | DEFAULT(OMIT) }}"
+    volumes:
+        - "{{ roundcubemail_config_volume_name }}:/var/roundcube/config"
+        - "{{ roundcubemail_logs_volume_name }}:/var/log/apache2"
+    restart_policy: "{{ roundcubemail_restart_policy | default(omit) }}"
+    published_ports: "{{ roundcubemail_published_ports | default(omit) }}"
+    privileged: "{{ roundcubemail_privileged | default(omit) }}"
+    hostname: "{{ roundcubemail_hostname | default(omit) }}"
     env: "{{ roundcubemail_env }}"
+
+- name: Link container logs to LFS compliant location
+  file:
+    src: "/var/lib/docker/volumes/{{ roundcubemail_logs_volume_name }}/_data/"
+    dest: "/var/log/roundcube"
+    state: "link"
