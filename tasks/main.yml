@@ -7,6 +7,7 @@
   docker_volume:
     name: "{{ roundcubemail_logs_volume_name }}"
 
+- name: 
 - name: Create a docker container
   docker_container:
     name: "{{ roundcubemail_container_name }}"
@@ -20,8 +21,9 @@
     hostname: "{{ roundcubemail_hostname | default(omit) }}"
     env: "{{ roundcubemail_env }}"
 
-- name: Link container logs to LFS compliant location
-  file:
-    src: "/var/lib/docker/volumes/{{ roundcubemail_logs_volume_name }}/_data/"
-    dest: "/var/log/roundcube"
-    state: "link"
+# This doesn't work because the "logs files" are symlinks to /dev/std[out,err]
+#- name: Link container logs to LFS compliant location
+#  file:
+#    src: "/var/lib/docker/volumes/{{ roundcubemail_logs_volume_name }}/_data/"
+#    dest: "/var/log/roundcube"
+#    state: "link"

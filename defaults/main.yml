@@ -5,8 +5,8 @@ roundcubemail_container_tag: 'latest'
 roundcubemail_config_volume_name: 'roundcubeconfigs'
 roundcubemail_logs_volume_name: "roundcubelogs"
 roundcubemail_published_ports:
-    - 80
-    - 443
+    - "80:80"
+    - "443:443"
 
 roundcubemail_default_host: 'localhost'
 roundcubemail_default_port: 143
