@@ -1,0 +1,15 @@
+---
+- name: Create RoundCube config volume
+  docker_volume:
+    name: "{{ roundcubemail_config_volume_name }}"
+
+- name: Create a docker container
+  docker_container:
+    name: "{{ roundcubemail_container_namge }}"
+    image: "{{ roundcubemail_container_image }}"
+    volumes: "{{ roundcubemail_config_volume_name }}:/VAR/ROUNDCUBE/CONFIG"
+    restart_policy: "{{ roundcubemail_restart_policy | DEFAULT(OMIT) }}"
+    published_ports: "{{ roundcubemail_published_ports | DEFAULT(OMIT) }}"
+    privileged: "{{ roundcubemail_privileged | DEFAULT(OMIT) }}"
+    hostname: "{{ roundcubemail_hostname | DEFAULT(OMIT) }}"
+    env: "{{ roundcubemail_env }}"
