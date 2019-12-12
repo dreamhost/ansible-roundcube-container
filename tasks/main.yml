@@ -11,7 +11,7 @@
   docker_image:
     name: "{{ roundcubemail_container_image }}"
     tag: "{{ roundcubemail_container_tag }}"
-    source: "pull"
+    pull: "yes"
 
 - name: Create a docker container
   docker_container:
